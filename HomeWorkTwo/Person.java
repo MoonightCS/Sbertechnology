@@ -1,4 +1,4 @@
-package HomeWorkTwo;
+package ru.sbt.bodya.hw;
 
 public class Person {
 
@@ -99,13 +99,16 @@ public class Person {
         }
 
         if (man1.marry(woman2) == false) {
-            System.out.println("False рабоатет");
+            System.out.println("False в методе marry рабоатет");
         }
 
         if (man2.marry(man1) == false) {
-            System.out.println("False работает");
+            System.out.println("False в методе marry работает");
         }
 
+        if (man2.divorce() == false) {
+            System.out.println("False в методе divorce работает");
+        }
     }
 
 }
