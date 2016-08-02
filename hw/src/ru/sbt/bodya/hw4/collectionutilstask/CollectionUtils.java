@@ -26,7 +26,9 @@ public class CollectionUtils {
 
 
     public static <T> List<T> limit(List<T> source, int size) {
+
         return source.size() <= size ? source : source.subList(0, size);
+
     }
 
 
