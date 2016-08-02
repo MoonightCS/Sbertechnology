@@ -1,4 +1,4 @@
-package ru.sbt.bodya.hw4.collectionUtilsTask;
+package ru.sbt.bodya.hw4.collectionutilstask;
 
 import java.util.Comparator;
 import java.util.List;

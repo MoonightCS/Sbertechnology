@@ -1,4 +1,4 @@
-package ru.sbt.bodya.hw4.collectionUtilsTask;
+package ru.sbt.bodya.hw4.collectionutilstask;
 
 import java.util.ArrayList;
 import java.util.Collections;

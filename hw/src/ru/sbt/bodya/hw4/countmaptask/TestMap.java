@@ -1,4 +1,4 @@
-package ru.sbt.bodya.hw4.countMapTask;
+package ru.sbt.bodya.hw4.countmaptask;
 
 import java.util.HashMap;
 import java.util.Map;
