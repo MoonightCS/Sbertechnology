@@ -1,4 +1,4 @@
-package ru.sbt.bodya.cw3.CollectionsMethodsUsage;
+package ru.sbt.bodya.cw3.collectionsMethodsUsage;
 
 import java.util.*;
 
