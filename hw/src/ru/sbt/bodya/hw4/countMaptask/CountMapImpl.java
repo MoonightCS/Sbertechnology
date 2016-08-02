@@ -5,9 +5,7 @@ import java.util.Map;
 
 public class CountMapImpl<E> implements CountMap<E> {
 
-
     private final Map<E, Integer> map;
-
 
     public CountMapImpl() {
         this.map = new HashMap<>();
@@ -57,6 +55,5 @@ public class CountMapImpl<E> implements CountMap<E> {
 
         }
     }
-
 
 }

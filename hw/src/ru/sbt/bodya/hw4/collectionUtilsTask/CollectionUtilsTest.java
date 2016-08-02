@@ -166,7 +166,7 @@ public class CollectionUtilsTest {
         List<Integer> rangeAnswer2 = CollectionUtils.range(integerList2, 20, 30, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return o1 < o2 ? -1: 1;
+                return o1 < o2 ? -1 : 1;
             }
         });
 
