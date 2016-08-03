@@ -32,10 +32,23 @@ public class CountMapImpl<E> implements CountMap<E> {
         return map.size();
     }
 
-    @Override
+
+    // первый способ
+    /*@Override
     public <T extends E> void addAll(CountMap<T> secondMap) {
         for (Map.Entry<T, Integer> e : secondMap.toMap().entrySet()) {
             for (int i = 0; i < secondMap.getCount(e.getKey()); i++) {
+                this.add(e.getKey());
+
+            }
+        }
+    }*/
+
+    // второй способ
+    @Override
+    public void addAll(CountMap<? extends E> secondMap) {
+        for (Map.Entry<? extends E, Integer> e : secondMap.toMap().entrySet()) {
+            for (int i = 0; i < secondMap.toMap().get(e.getKey()); i++) {
                 this.add(e.getKey());
 
             }

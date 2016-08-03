@@ -14,7 +14,7 @@ public interface CountMap<E> {
 
     void add(E o);
 
-    <T extends E> void addAll(CountMap<T> map);
+    void addAll(CountMap<? extends E> map);
 
     Map<E, Integer> toMap();
 
