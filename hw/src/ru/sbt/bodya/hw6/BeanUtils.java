@@ -11,8 +11,6 @@ public class BeanUtils {
 
         Map<String, Method> gettersFrom = new HashMap<>();
 
-
-
         for (Method methodFrom : from.getClass().getMethods()) {
 
             if (isGet(methodFrom)) {
