@@ -13,29 +13,25 @@ public class BeanUtils {
         String tmp;
 
 
-        for (Method method : from.getClass().getMethods()) {
+        for (Method methodFrom : from.getClass().getMethods()) {
 
-            if (isGet(method)) {
+            if (isGet(methodFrom)) {
 
-                tmp = method.getName().substring(3);
+                tmp = methodFrom.getName().substring(3);
                 if (!gettersFrom.containsKey(tmp)) {
-                    gettersFrom.put(tmp, method);
+                    gettersFrom.put(tmp, methodFrom);
                 }
 
             }
         }
 
-        for (Method method : to.getClass().getMethods()) {
+        for (Method methodTo : to.getClass().getMethods()) {
 
-            tmp = method.getName().substring(3);
+            if (isSet(methodTo, gettersFrom)) {
 
-            if (isSet(method, gettersFrom, tmp)) {
+                Method methodFrom = gettersFrom.get(methodTo.getName().substring(3));
 
-                Method methodFrom = gettersFrom.get(tmp);
-
-                Class returnTypeFrom = methodFrom.getReturnType();
-
-                tryToInvoke(methodFrom, method, returnTypeFrom, to, from);
+                tryToInvoke(methodFrom, methodTo, to, from);
 
             }
         }
@@ -52,8 +48,9 @@ public class BeanUtils {
 
     }
 
-    private static boolean isSet(Method method, Map gettersFrom, String key) {
+    private static boolean isSet(Method method, Map gettersFrom) {
 
+        String key = method.getName().substring(3);
         if (method.getName().startsWith("set") && method.getParameterCount() == 1 &&
                 gettersFrom.containsKey(key)) {
             return true;
@@ -61,9 +58,9 @@ public class BeanUtils {
 
     }
 
-    private static void tryToInvoke(Method methodFrom, Method methodTo, Class returnTypeFrom,
-                                    Object to, Object from) {
+    private static void tryToInvoke(Method methodFrom, Method methodTo, Object to, Object from) {
 
+        Class returnTypeFrom = methodFrom.getReturnType();
         while (returnTypeFrom != null) {
 
             if (returnTypeFrom == methodTo.getParameterTypes()[0]) {
