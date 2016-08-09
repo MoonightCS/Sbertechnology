@@ -19,7 +19,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "Account: {" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", money=" + money +

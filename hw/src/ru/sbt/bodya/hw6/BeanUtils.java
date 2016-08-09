@@ -51,13 +51,8 @@ public class BeanUtils {
                     } else {
                         returnTypeFrom = returnTypeFrom.getSuperclass();
                     }
-
                 }
-
             }
-
         }
-
     }
-
 }

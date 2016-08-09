@@ -24,7 +24,6 @@ public class BeanUtilsTest {
         System.out.println("Значения полей после вызова метода:");
         printFields(to);
 
-
         //
 
         // Тестим все геттеры и сеттеры

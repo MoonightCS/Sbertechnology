@@ -12,6 +12,7 @@ public class ToFactory {
     private Character object6;
     private Float object7;
 
+
     public ToFactory(Integer object1, Double object2, Date object3, Account object4, String object5, Character object6, Float object7) {
         this.object1 = object1;
         this.object2 = object2;

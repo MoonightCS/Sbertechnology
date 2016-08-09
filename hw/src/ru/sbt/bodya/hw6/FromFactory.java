@@ -12,6 +12,7 @@ public class FromFactory {
     private Float object6;
     private Character object7;
 
+
     public FromFactory(Integer object1, Double object2, Date object3, Account object4, String object5, Float object6, Character object7) {
         this.object1 = object1;
         this.object2 = object2;
@@ -21,7 +22,6 @@ public class FromFactory {
         this.object6 = object6;
         this.object7 = object7;
     }
-
 
     public Integer getObject1() {
         return object1;
