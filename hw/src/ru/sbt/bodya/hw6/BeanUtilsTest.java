@@ -40,7 +40,6 @@ public class BeanUtilsTest {
         printGetMethods(to);
 
 
-
         System.out.println("Вывод всех геттеров объекта 'from' с их значениями до присвоения новых значений: ");
         printGetMethods(from);
         from.setObject1(10);
@@ -66,7 +65,8 @@ public class BeanUtilsTest {
                 System.out.println(field.get(o));
                 field.setAccessible(false);
             } catch (IllegalAccessException e) {
-                System.out.println(e.getMessage());;
+                System.out.println(e.getMessage());
+                ;
             }
 
         }
@@ -74,7 +74,7 @@ public class BeanUtilsTest {
 
     }
 
-    private static void  printGetMethods(Object o) {
+    private static void printGetMethods(Object o) {
 
         for (Method method : o.getClass().getMethods()) {
 

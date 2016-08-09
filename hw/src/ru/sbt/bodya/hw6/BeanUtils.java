@@ -1,11 +1,9 @@
 package ru.sbt.bodya.hw6;
 
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class BeanUtils {
 
@@ -42,6 +40,7 @@ public class BeanUtils {
                 returnTypeFrom = gettersFrom.get(tmp).getReturnType();
 
                 while (returnTypeFrom != null) {
+
                     if (returnTypeFrom == method.getParameterTypes()[0]) {
                         try {
                             method.invoke(to, methodFrom.invoke(from));
@@ -52,6 +51,7 @@ public class BeanUtils {
                     } else {
                         returnTypeFrom = returnTypeFrom.getSuperclass();
                     }
+
                 }
 
             }
