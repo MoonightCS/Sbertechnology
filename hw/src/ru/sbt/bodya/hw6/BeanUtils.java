@@ -10,14 +10,14 @@ public class BeanUtils {
     public static void assign(Object to, Object from) {
 
         Map<String, Method> gettersFrom = new HashMap<>();
-        String tmp;
+
 
 
         for (Method methodFrom : from.getClass().getMethods()) {
 
             if (isGet(methodFrom)) {
 
-                tmp = methodFrom.getName().substring(3);
+                String tmp = methodFrom.getName().substring(3);
                 if (!gettersFrom.containsKey(tmp)) {
                     gettersFrom.put(tmp, methodFrom);
                 }
