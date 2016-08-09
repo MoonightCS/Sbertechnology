@@ -10,15 +10,12 @@ public class BeanUtils {
     public static void assign(Object to, Object from) {
 
         Map<String, Method> gettersFrom = new HashMap<>();
-        Class returnTypeFrom;
-        Method methodFrom;
         String tmp;
 
 
         for (Method method : from.getClass().getMethods()) {
 
-            if (method.getName().startsWith("get") && method.getParameterCount() == 0 &&
-                    !void.class.equals(method.getReturnType())) {
+            if (isGet(method)) {
 
                 tmp = method.getName().substring(3);
                 if (!gettersFrom.containsKey(tmp)) {
@@ -32,27 +29,54 @@ public class BeanUtils {
 
             tmp = method.getName().substring(3);
 
-            if (method.getName().startsWith("set") && method.getParameterCount() == 1 &&
-                    gettersFrom.containsKey(tmp)) {
+            if (isSet(method, gettersFrom, tmp)) {
 
-                methodFrom = gettersFrom.get(tmp);
+                Method methodFrom = gettersFrom.get(tmp);
 
-                returnTypeFrom = gettersFrom.get(tmp).getReturnType();
+                Class returnTypeFrom = methodFrom.getReturnType();
 
-                while (returnTypeFrom != null) {
+                tryToInvoke(methodFrom, method, returnTypeFrom, to, from);
 
-                    if (returnTypeFrom == method.getParameterTypes()[0]) {
-                        try {
-                            method.invoke(to, methodFrom.invoke(from));
-                            break;
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            System.out.println(e.getMessage());
-                        }
-                    } else {
-                        returnTypeFrom = returnTypeFrom.getSuperclass();
-                    }
-                }
             }
         }
+    }
+
+    private static boolean isGet(Method method) {
+
+        if (method.getName().startsWith("get") && method.getParameterCount() == 0 &&
+                !void.class.equals(method.getReturnType())) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private static boolean isSet(Method method, Map gettersFrom, String key) {
+
+        if (method.getName().startsWith("set") && method.getParameterCount() == 1 &&
+                gettersFrom.containsKey(key)) {
+            return true;
+        } else return false;
+
+    }
+
+    private static void tryToInvoke(Method methodFrom, Method methodTo, Class returnTypeFrom,
+                                    Object to, Object from) {
+
+        while (returnTypeFrom != null) {
+
+            if (returnTypeFrom == methodTo.getParameterTypes()[0]) {
+                try {
+                    methodTo.invoke(to, methodFrom.invoke(from));
+                    break;
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else {
+                returnTypeFrom = returnTypeFrom.getSuperclass();
+            }
+        }
+
     }
 }
