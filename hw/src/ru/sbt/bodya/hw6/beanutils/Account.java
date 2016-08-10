@@ -1,4 +1,4 @@
-package ru.sbt.bodya.hw6;
+package ru.sbt.bodya.hw6.beanutils;
 
 public class Account {
 

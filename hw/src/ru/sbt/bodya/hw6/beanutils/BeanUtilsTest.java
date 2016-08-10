@@ -1,4 +1,4 @@
-package ru.sbt.bodya.hw6;
+package ru.sbt.bodya.hw6.beanutils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
