@@ -16,7 +16,7 @@ public class PluginManager {
             IllegalAccessException, InstantiationException, MalformedURLException {
 
 
-        URL url = new URL(pluginRootDirectory.toString());
+        URL url = new URL(pluginRootDirectory.toString() + pluginName + "/");
         URLClassLoader loader = new PluginClassLoader(new URL[]{url});
         Plugin plugin = (Plugin)loader.loadClass(pluginClassName).newInstance();
         return plugin;

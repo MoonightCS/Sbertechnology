@@ -10,7 +10,7 @@ public class TestPluginClassLoader {
 
         List<Plugin> pluginList = new ArrayList<>();
 
-        String pluginRootDirectory = "file:/Users/bogdanpopov/Desktop/Sbertechnology/out/production/hw/";
+        String pluginRootDirectory = "file:/Users/user/Desktop/Sbertechnology/hw/pluginRootDirectory/";
 
 
         PluginManager pluginManager = new PluginManager(pluginRootDirectory);
