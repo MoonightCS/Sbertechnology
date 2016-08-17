@@ -10,7 +10,7 @@ public class TestPluginClassLoader {
 
         List<Plugin> pluginList = new ArrayList<>();
 
-        String pluginRootDirectory = "file:/Users/bogdanpopov/Desktop/Sbertechnology/hw/pluginRootDirectory/";
+        String pluginRootDirectory = "file:/Users/bogdanpopov/Desktop/Sbertechnology/maven projects/hw7/src/main/java/ru/sbt/bodya/hw7/pluginmanager/pluginRootDirectory/";
 
 
         PluginManager pluginManager = new PluginManager(pluginRootDirectory);
