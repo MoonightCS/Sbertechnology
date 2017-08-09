@@ -30,7 +30,7 @@ public class EncryptedClassloader extends ClassLoader {
         byte[] bytes;
         try {
             bytes = Files.readAllBytes(filePath);
-            OutputStream tmpOutputStream = tmpOutputStream = new FileOutputStream("/Users/bogdanpopov/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/file2.txt");
+            OutputStream tmpOutputStream = tmpOutputStream = new FileOutputStream("/Users/user/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/file2.txt");
 
             int key = this.key.length();
 
@@ -58,7 +58,7 @@ public class EncryptedClassloader extends ClassLoader {
 
 
             InputStream inputStream = new FileInputStream(path);
-            OutputStream tmpOutputStream = new FileOutputStream("/Users/bogdanpopov/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/file.txt");
+            OutputStream tmpOutputStream = new FileOutputStream("/Users/user/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/file.txt");
 
             for (int b = inputStream.read(); b >= 0; b = inputStream.read()) {
                 tmpOutputStream.write(b + 1);
@@ -67,7 +67,7 @@ public class EncryptedClassloader extends ClassLoader {
             tmpOutputStream.close();
             inputStream.close();
 
-            InputStream tmpInputStream = new FileInputStream("/Users/bogdanpopov/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/file.txt");
+            InputStream tmpInputStream = new FileInputStream("/Users/user/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/file.txt");
             OutputStream outputStream = new FileOutputStream(path);
 
             for (int b = tmpInputStream.read(); b >= 0; b = tmpInputStream.read()) {
@@ -106,12 +106,12 @@ public class EncryptedClassloader extends ClassLoader {
 
     public static void main(String[] args) {
 
-        encrypt("/Users/bogdanpopov/Desktop/testingSomeShit/Main.class");
+        encrypt("/Users/user/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/Main.class");
 
-        EncryptedClassloader encryptedClassloader = new EncryptedClassloader("String", new File("/Users/bogdanpopov/Desktop/testingSomeShit/"), ClassLoader.getSystemClassLoader());
+        EncryptedClassloader encryptedClassloader = new EncryptedClassloader("123", new File("/Users/user/Desktop/Sbertechnology/maven projects/hw7/src/main/resources/"), ClassLoader.getSystemClassLoader());
 
         try {
-            encryptedClassloader.findClass("Main");
+            encryptedClassloader.findClass("Main.class");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
